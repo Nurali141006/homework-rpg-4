@@ -18,10 +18,10 @@ public class Main {
         System.out.println("=== Homework 4 Demo: Bridge + Composite ===\n");
 
         // TODO: build leaves
-        HeroUnit warrior = new HeroUnit("Arthas", 140, 30);
-        HeroUnit mage = new HeroUnit("Jaina", 90, 40);
-        EnemyUnit goblin = new EnemyUnit("Goblin", 70, 20);
-        EnemyUnit orc = new EnemyUnit("Orc", 120, 25);
+        HeroUnit warrior = new HeroUnit("Artur", 150, 50);
+        HeroUnit mage = new HeroUnit("Avrora", 70, 45);
+        EnemyUnit goblin = new EnemyUnit("Goblin", 70, 25);
+        EnemyUnit orc = new EnemyUnit("Orc", 130, 45);
 
         // TODO: build composite hierarchy (nested)
         PartyComposite heroes = new PartyComposite("Heroes");
@@ -40,9 +40,9 @@ public class Main {
         enemies.printTree("");
 
         // TODO: Bridge combinations
-        Skill slashFire = new SingleTargetSkill("Slash", 20, new FireEffect());
-        Skill slashIce = new SingleTargetSkill("Slash", 20, new IceEffect());
-        Skill stormFire = new AreaSkill("Storm", 15, new FireEffect());
+        Skill slashFire = new SingleTargetSkill("Fire", 20, new FireEffect());
+        Skill slashIce = new SingleTargetSkill("Ice", 20, new IceEffect());
+        Skill stormFire = new AreaSkill("Stormfire", 15, new FireEffect());
 
         System.out.println("\n--- Bridge Preview ---");
         System.out.println(slashFire.getSkillName() + " using " + slashFire.getEffectName());

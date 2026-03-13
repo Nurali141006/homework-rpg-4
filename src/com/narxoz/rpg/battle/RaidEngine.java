@@ -14,20 +14,31 @@ public class RaidEngine {
     }
 
     public RaidResult runRaid(CombatNode teamA, CombatNode teamB, Skill teamASkill, Skill teamBSkill) {
-        // TODO: Validate inputs (null checks, alive checks, required skills).
-        // TODO: Implement round-based simulation:
-        // 1) Team A casts on Team B
-        // 2) Team B casts on Team A (if still alive)
-        // 3) Track rounds and log each step
-        // 4) Stop when one team is defeated (or max rounds reached)
-        //
-        // Optional extension:
-        // Use random for critical strikes or other deterministic events.
-        // Example: boolean critA = random.nextInt(100) < 10;
-        RaidResult result = new RaidResult();
-        result.setRounds(0);
-        result.setWinner("TBD");
-        result.addLine("TODO: implement raid simulation");
+         RaidResult result = new RaidResult();
+        int round = 1;
+
+        while (teamA.isAlive() && teamB.isAlive()) {
+            result.addLine("=== Round " + round + " ===");
+
+            if (teamA.isAlive() && teamB.isAlive()) {
+                result.addLine("Team A uses skill on Team B:");
+                teamASkill.cast(teamB);
+            }
+         if (teamB.isAlive() && teamA.isAlive()) {
+                result.addLine("Team B uses skill on Team A:");
+                teamBSkill.cast(teamA);
+            }
+       
+            result.addLine("Team A status:");
+            teamA.printTree("  ");
+            result.addLine("Team B status:");
+            teamB.printTree("  ");
+
+            round++;
+        }
+         result.setRounds(round - 1);
+        result.setWinner(teamA.isAlive() ? "Team A" : "Team B");
         return result;
     }
-}
+    }
+

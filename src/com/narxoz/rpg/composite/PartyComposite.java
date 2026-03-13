@@ -47,13 +47,13 @@ public class PartyComposite implements CombatNode {
 
     @Override
     public void takeDamage(int amount) {
-        // TODO: Composite distribution
-        // Distribute incoming damage across alive children.
-        // Suggested baseline:
-        // 1) Collect alive children
-        // 2) Split amount evenly (or using your own documented rule)
-        // 3) Apply damage to each child
-    }
+         List<CombatNode> alive = getAliveChildren();
+    if (alive.isEmpty()) return;
+
+    int perChild = amount / alive.size();
+    for (CombatNode child : alive) {
+        child.takeDamage(perChild);
+    }}
 
     @Override
     public boolean isAlive() {

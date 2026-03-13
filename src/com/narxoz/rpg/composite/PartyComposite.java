@@ -70,11 +70,13 @@ public class PartyComposite implements CombatNode {
 
     @Override
     public void printTree(String indent) {
-        System.out.println(indent + "+ " + name + " [HP: " + getHealth() + ", ATK: " + getAttackPower() + "]");
+      int totalHP = getHealth();
+    int totalATK = getAttackPower();
+    System.out.println(indent + "+ " + getName() + " [HP: " + totalHP + ", ATK: " + totalATK + "]");
     for (CombatNode child : children) {
         child.printTree(indent + "  ");
     }
-    }
+}
 
     private List<CombatNode> getAliveChildren() {
          List<CombatNode> alive = new ArrayList<>();
@@ -82,5 +84,5 @@ public class PartyComposite implements CombatNode {
         if (child.isAlive()) alive.add(child);
     }
     return alive;
-}
-}
+    
+}}

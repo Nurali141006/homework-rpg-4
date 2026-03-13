@@ -1,0 +1,18 @@
+CombatNode (interface)
++ getName(): String
++ getHealth(): int
++ getAttackPower(): int
++ takeDamage(amount: int)
++ isAlive(): boolean
++ printTree(indent: String)
++ getChildren(): List<CombatNode>
+
+UnitLeaf (HeroUnit / EnemyUnit)
+
+PartyComposite
+- children: List<CombatNode>
+- add(node: CombatNode)
+- remove(node: CombatNode)
+- getAliveChildren(): List<CombatNode>
+
+RaidGroup (extends PartyComposite)

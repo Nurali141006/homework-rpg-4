@@ -1,0 +1,19 @@
+
+Skill (abstract)
++ skillName: String
++ basePower: int
++ effect: EffectImplementor
++ cast(target: CombatNode)
+
+SingleTargetSkill
+AreaSkill
+
+EffectImplementor (interface)
++ computeDamage(basePower: int): int
++ getEffectName(): String
+
+Concrete Implementors:
+- FireEffect
+- IceEffect
+- ShadowEffect
+- PhysicalEffect
